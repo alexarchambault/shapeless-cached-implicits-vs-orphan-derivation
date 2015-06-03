@@ -32,5 +32,14 @@ object DirectCachedThe {
   import GenDecodeJsons._
       
   implicit val ccDecodeJson = the[DecodeJson[CC]]
-  //implicit val cc2DecodeJson = the[DecodeJson[CC2]] // Doesn't work either
+  implicit val cc2DecodeJson = the[DecodeJson[CC2]]
+}
+
+object Cached {
+  import shapeless._
+  import argonaut._
+  import GenDecodeJsons._
+      
+  implicit val ccDecodeJson: DecodeJson[CC] = cachedImplicit
+  implicit val cc2DecodeJson: DecodeJson[CC2] = cachedImplicit
 }
